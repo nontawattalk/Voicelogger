@@ -1,0 +1,11 @@
+:root { font-family: system-ui, sans-serif; line-height: 1.45; }
+body { margin: 0; background: #f6f7f9; }
+header, footer { padding: 12px 20px; background: #111827; color: #fff; }
+main { padding: 20px; max-width: 920px; margin: 0 auto; }
+.card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+h1, h2 { margin: 0 0 10px; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+label { display: block; margin: 8px 0; }
+button { padding: 8px 14px; border: 0; border-radius: 6px; background: #2563eb; color: #fff; cursor: pointer; }
+button:hover { background: #1d4ed8; }
+fieldset { border: 1px solid #e5e7eb; border-radius: 6px; padding: 8px 12px; margin: 8px 0; }
