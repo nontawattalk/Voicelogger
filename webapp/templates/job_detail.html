@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h2>งาน: {{ job.filename }}</h2>
+  <p>สถานะ: <strong>{{ job.status }}</strong>{% if job.message %} — {{ job.message }}{% endif %}</p>
+
+  {% if job.status == "done" and files %}
+    <h3>ไฟ์ฬลับผลลับ</h3>
+    <ul>
+      {% for name in files %}
+        <li><a href="/download/{{ job.id }}/{{ name }}">{{ name }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>ยังไม่พร้อมดาวน์โหลด ลองรีเฟรชหน้านี้อีกครั้ง</p>
+  {% endif %}
+</section>
+{% endblock %}
