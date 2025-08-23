@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h2>อัปโหลดไฟ์เสียง</h2>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <label>ไฟล์เสียง: <input type="file" name="file" required /></label>
+    <div class="grid">
+      <label>โมเดล:
+        <select name="model">
+          <option>small</option>
+          <option selected>medium</option>
+          <option>large-v2</option>
+          <option>large-v3</option>
+        </select>
+      </label>
+      <label>ภาษา:
+        <select name="language">
+          <option value="th" selected>ไทย (th)</option>
+          <option value="auto">Auto</option>
+          <option value="en">อังกฤษษ์ (en)</option>
+        </select>
+      </label>
+    </div>
+
+    <fieldset>
+      <legend>ผลลัพธ์</legend>
+      <label><input type="checkbox" name="do_txt" checked> TXT</label>
+      <label><input type="checkbox" name="do_srt" checked> SRT</label>
+      <label><input type="checkbox" name="do_vtt" checked> VTT</label>
+      <label><input type="checkbox" name="do_json" checked> JSON</label>
+      <label><input type="checkbox" name="do_summary" checked> สรุปย่อ</label>
+    </fieldset>
+
+    <label>รหัสผ่าน (ถ้าต้องการเข้ารหัสไฟล์เสียง .enc):
+      <input type="password" name="passphrase" placeholder="ใส่แล้วจะสร้าง audio.enc" />
+    </label>
+
+    <button type="submit">เริ่มประมวลผล</button>
+  </form>
+</section>
+
+<section class="card">
+  <h2>งานล่าสุด</h2>
+  {% if jobs %}
+    <ul>
+      {% for j in jobs %}
+      <li>
+        <a href="/jobs/{{ j.id }}">{{ j.filename }}</a>
+        — <em>{{ j.status }}</em>
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>ยังไม่มีงาน</p>
+  {% endif %}
+</section>
+{% endblock %}
